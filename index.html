@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Hpy Ghandhis Community
+</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+html,
+body{
+width:100%;
+overflow-x:hidden;
+}
+
+body{
+
+min-height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+padding:12px;
+
+background:
+radial-gradient(circle at top left,#00c3ff55,transparent 35%),
+radial-gradient(circle at bottom right,#0099ff44,transparent 35%),
+#050816;
+
+color:white;
+
+}
+
+.container{
+width:100%;
+max-width:700px;
+margin:auto;
+}
+
+.card{
+
+width:100%;
+
+background:
+rgba(255,255,255,.08);
+
+backdrop-filter:
+blur(25px);
+
+-webkit-backdrop-filter:
+blur(25px);
+
+border:
+1px solid rgba(255,255,255,.1);
+
+border-radius:30px;
+
+padding:20px;
+
+overflow:hidden;
+
+text-align:center;
+
+box-shadow:
+0 0 30px rgba(0,180,255,.15);
+
+}
+
+.avatar{
+font-size:70px;
+}
+
+.title{
+
+font-size:2rem;
+
+font-weight:800;
+
+margin-top:10px;
+
+line-height:1.15;
+
+}
+
+.welcome{
+
+margin-top:18px;
+
+font-size:1.4rem;
+
+font-weight:800;
+
+line-height:1.3;
+
+}
+
+.bio{
+
+margin-top:10px;
+
+line-height:1.8;
+
+color:#d7f4ff;
+
+font-size:1rem;
+
+}
+
+.join-btn{
+
+width:100%;
+
+margin-top:20px;
+
+padding:18px;
+
+border:none;
+
+border-radius:20px;
+
+background:#09111f;
+
+color:white;
+
+cursor:pointer;
+
+font-size:1rem;
+
+font-weight:700;
+
+position:relative;
+
+overflow:hidden;
+
+z-index:1;
+
+}
+
+.join-btn::before{
+
+content:'';
+
+position:absolute;
+
+inset:-2px;
+
+border-radius:22px;
+
+z-index:-1;
+
+background:
+linear-gradient(
+90deg,
+#00ffff,
+#00aaff,
+#58dfff,
+#00ffff
+);
+
+background-size:300%;
+
+animation:borderMove 4s linear infinite;
+
+}
+
+@keyframes borderMove{
+
+100%{
+background-position:300%;
+}
+
+}
+
+.divider{
+
+height:1px;
+
+margin:22px 0;
+
+background:
+rgba(255,255,255,.1);
+
+}
+
+.stats{
+
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:10px;
+
+}
+
+.box{
+
+background:
+rgba(255,255,255,.06);
+
+padding:16px;
+
+border-radius:18px;
+
+}
+
+.number{
+
+font-size:1.8rem;
+
+font-weight:800;
+
+}
+
+.dot{
+
+width:12px;
+height:12px;
+
+display:inline-block;
+
+border-radius:50%;
+
+background:#00ff66;
+
+box-shadow:
+0 0 10px #00ff66,
+0 0 20px #00ff66;
+
+animation:blink 1.2s infinite;
+
+}
+
+@keyframes blink{
+
+50%{
+opacity:.35;
+transform:scale(.8);
+}
+
+}
+
+.info-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:10px;
+
+margin-top:15px;
+
+}
+
+.info{
+
+background:
+rgba(255,255,255,.06);
+
+padding:16px;
+
+border-radius:18px;
+
+line-height:1.4;
+
+}
+
+.rank-card{
+
+grid-column:span 2;
+
+}
+
+.status{
+
+color:#6dff90;
+
+font-weight:bold;
+
+animation:pulse 1.5s infinite;
+
+}
+
+@keyframes pulse{
+
+50%{
+opacity:.45;
+}
+
+}
+
+.footer{
+
+margin-top:20px;
+
+font-size:.9rem;
+
+opacity:.8;
+
+}
+/* MODAL */
+
+.modal{
+
+display:none;
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:
+rgba(0,0,0,.82);
+
+justify-content:center;
+align-items:center;
+
+padding:20px;
+
+z-index:9999;
+
+}
+
+.modal-box{
+
+width:100%;
+
+max-width:360px;
+
+background:
+rgba(16,24,40,.95);
+
+padding:25px;
+
+border-radius:24px;
+
+text-align:center;
+
+border:
+1px solid rgba(255,255,255,.08);
+
+}
+
+.lock{
+
+font-size:60px;
+
+margin-bottom:10px;
+
+}
+
+.reject{
+
+margin:10px 0;
+
+font-weight:800;
+
+color:#ff7272;
+
+}
+
+.buttons{
+
+display:flex;
+
+gap:10px;
+
+margin-top:15px;
+
+}
+
+.buttons button{
+
+flex:1;
+
+padding:12px;
+
+border:none;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-size:15px;
+
+}
+
+.ok{
+
+background:#00aaff;
+
+color:white;
+
+}
+
+.cancel{
+
+background:#222;
+
+color:white;
+
+}
+
+.meme{
+
+margin-top:12px;
+
+min-height:24px;
+
+font-weight:bold;
+
+color:#ffd36a;
+
+}
+
+/* MOBILE V3 */
+
+@media(max-width:600px){
+
+body{
+padding:10px;
+}
+
+.card{
+padding:16px;
+border-radius:22px;
+}
+
+.avatar{
+font-size:60px;
+}
+
+.title{
+font-size:1.8rem;
+}
+
+.welcome{
+font-size:1.15rem;
+}
+
+.bio{
+font-size:.95rem;
+line-height:1.6;
+}
+
+.number{
+font-size:1.35rem;
+}
+
+.box,
+.info{
+padding:14px;
+}
+
+.join-btn{
+padding:16px;
+font-size:.95rem;
+}
+
+.stats,
+.info-grid{
+gap:8px;
+}
+
+.rank-card{
+grid-column:span 2;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<div class="avatar">
+😎
+</div>
+
+<div class="title">
+Hpy Ghandhis Community
+</div>
+
+<div class="welcome">
+👊 Welcome Bro And Bestie 😎
+</div>
+
+<div class="bio">
+😎 Welcome To The Community
+<br>
+Most Handsome And Beautiful 😎
+</div>
+
+<button
+class="join-btn"
+onclick="openModal()">
+
+Join To Community Besties
+
+</button>
+
+<div class="divider"></div>
+
+<div class="stats">
+
+<div class="box">
+
+<div
+id="members"
+class="number">
+
+947,283
+
+</div>
+
+<div>
+👥 Members
+</div>
+
+</div>
+
+<div class="box">
+
+<div
+id="online"
+class="number">
+
+42,918
+
+</div>
+
+<div>
+
+<span class="dot"></span>
+
+Online
+
+</div>
+
+</div>
+
+</div>
+
+<div class="info-grid">
+
+<div class="info">
+
+<b>📈 Community Status</b>
+
+<div
+id="status"
+class="status">
+
+Very Active
+
+</div>
+
+</div>
+
+<div class="info">
+
+<b>🔥 Peak Today</b>
+
+<div id="peak">
+
+58,214
+
+</div>
+
+</div>
+
+<div class="info">
+
+<b>📅 Established</b>
+
+<div>
+2026
+</div>
+
+</div>
+
+<div class="info">
+
+<b>👀 Visitors</b>
+
+<div id="visitors">
+
+12,847
+
+</div>
+
+</div>
+
+<div class="info rank-card">
+
+<b>🏆 Community Rank</b>
+
+<div>
+#1 Community
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+© 2026 Hpy Ghandhis Community
+
+</div>
+
+</div>
+
+</div>
+
+<div
+class="modal"
+id="modal">
+
+<div class="modal-box">
+
+<div class="lock">
+🔒
+</div>
+
+<h2>
+Hpy Ghandhis Community
+</h2>
+
+<div class="reject">
+
+🚫 YOU ARE REJECTED 🚫
+
+</div>
+
+<p>
+
+Server Locked By
+<br>
+Admins And Moderators
+
+</p>
+
+<div class="buttons">
+
+<button
+class="ok"
+onclick="closeModal()">
+
+OK
+
+</button>
+
+<button
+class="cancel"
+onclick="showMeme()">
+
+Still Join
+
+</button>
+
+</div>
+
+<div
+id="meme"
+class="meme">
+
+</div>
+
+</div>
+
+</div>
+<script>
+
+// =========================
+// STORAGE
+// =========================
+
+let joinCount = 0;
+
+let peakToday =
+parseInt(
+localStorage.getItem('peakToday')
+) || 58214;
+
+let members =
+parseInt(
+localStorage.getItem('members')
+) || 947283;
+
+let visitors =
+parseInt(
+localStorage.getItem('visitors')
+) || 12847;
+
+// LOAD DATA
+
+document
+.getElementById('members')
+.innerText =
+members.toLocaleString('en-US');
+
+document
+.getElementById('visitors')
+.innerText =
+visitors.toLocaleString('en-US');
+
+document
+.getElementById('peak')
+.innerText =
+peakToday.toLocaleString('en-US');
+
+// =========================
+// ONLINE SYSTEM
+// =========================
+
+function getRealisticOnline(){
+
+const hour =
+new Date().getHours();
+
+if(hour >= 0 && hour < 5){
+
+return 36000 +
+Math.floor(Math.random()*4000);
+
+}
+
+if(hour >= 5 && hour < 10){
+
+return 42000 +
+Math.floor(Math.random()*5000);
+
+}
+
+if(hour >= 10 && hour < 15){
+
+return 50000 +
+Math.floor(Math.random()*6000);
+
+}
+
+if(hour >= 15 && hour < 19){
+
+return 47000 +
+Math.floor(Math.random()*5000);
+
+}
+
+return 55000 +
+Math.floor(Math.random()*7000);
+
+}
+
+let online =
+getRealisticOnline();
+
+document
+.getElementById('online')
+.innerText =
+online.toLocaleString('en-US');
+
+// =========================
+// ONLINE UPDATE
+// =========================
+
+setInterval(()=>{
+
+online +=
+Math.floor(Math.random()*400)-200;
+
+online = Math.max(
+30000,
+online
+);
+
+document
+.getElementById('online')
+.innerText =
+online.toLocaleString('en-US');
+
+if(online > peakToday){
+
+peakToday =
+online +
+Math.floor(Math.random()*2500);
+
+localStorage.setItem(
+'peakToday',
+peakToday
+);
+
+showRecord();
+
+}
+
+document
+.getElementById('peak')
+.innerText =
+peakToday.toLocaleString('en-US');
+
+},5000);
+
+// =========================
+// MEMBERS UPDATE
+// =========================
+
+setInterval(()=>{
+
+members +=
+Math.floor(Math.random()*3);
+
+document
+.getElementById('members')
+.innerText =
+members.toLocaleString('en-US');
+
+localStorage.setItem(
+'members',
+members
+);
+
+},12000);
+
+// =========================
+// VISITORS UPDATE
+// =========================
+
+setInterval(()=>{
+
+visitors +=
+Math.floor(Math.random()*8);
+
+document
+.getElementById('visitors')
+.innerText =
+visitors.toLocaleString('en-US');
+
+localStorage.setItem(
+'visitors',
+visitors
+);
+
+},6000);
+
+// =========================
+// COMMUNITY STATUS
+// =========================
+
+function updateStatus(){
+
+const hour =
+new Date().getHours();
+
+let status =
+'Very Active';
+
+if(hour < 5){
+
+status =
+'Moderate Activity';
+
+}
+
+else if(hour < 11){
+
+status =
+'Growing Activity';
+
+}
+
+else if(hour < 15){
+
+status =
+'Peak Activity';
+
+}
+
+else if(hour < 19){
+
+status =
+'Active';
+
+}
+
+else{
+
+status =
+'Night Rush';
+
+}
+
+document
+.getElementById('status')
+.innerText =
+status;
+
+}
+
+updateStatus();
+
+// =========================
+// MODAL
+// =========================
+
+function openModal(){
+
+joinCount++;
+
+document
+.getElementById('modal')
+.style.display='flex';
+
+if(joinCount === 5){
+
+document
+.getElementById('meme')
+.innerText =
+'🤨 Bro Is Still Trying?';
+
+}
+
+else if(joinCount === 10){
+
+document
+.getElementById('meme')
+.innerText =
+'🗿 The Server Is Still Locked';
+
+}
+
+else if(joinCount === 20){
+
+document
+.getElementById('meme')
+.innerText =
+'🏆 Achievement Unlocked: Professional Button Clicker';
+
+}
+
+}
+
+function closeModal(){
+
+document
+.getElementById('modal')
+.style.display='none';
+
+}
+
+function showMeme(){
+
+const memes=[
+
+'🤝 Your Request Has Been Ignored',
+
+'🗿 The Admins Said Nope',
+
+'🚪 Access Still Denied',
+
+'😎 Nice Attempt Bestie',
+
+'📨 Access Request Sent To Nobody',
+
+'🍕 Admins Are Busy Eating Pizza'
+
+];
+
+document
+.getElementById('meme')
+.innerText =
+
+memes[
+Math.floor(
+Math.random()*memes.length
+)
+];
+
+}
+
+// =========================
+// NEW RECORD
+// =========================
+
+function showRecord(){
+
+const record =
+document.createElement('div');
+
+record.innerText =
+'🔥 NEW RECORD!';
+
+record.style.position =
+'fixed';
+
+record.style.top =
+'20px';
+
+record.style.left =
+'50%';
+
+record.style.transform =
+'translateX(-50%)';
+
+record.style.padding =
+'12px 20px';
+
+record.style.borderRadius =
+'15px';
+
+record.style.background =
+'#ff6600';
+
+record.style.color =
+'#fff';
+
+record.style.fontWeight =
+'bold';
+
+record.style.zIndex =
+'99999';
+
+document.body.appendChild(record);
+
+setTimeout(()=>{
+
+record.remove();
+
+},2500);
+
+}
+
+</script>
+
+</body>
+</html>
